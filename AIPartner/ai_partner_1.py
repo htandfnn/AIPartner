@@ -53,6 +53,9 @@ def load_sessions():
         for filename in file_lise:
             if filename.endswith(".json"):
                 session_list.append(filename[:-5])
+    #反转列表
+    session_list.sort()
+    session_list.reverse()
     return session_list
 
 #加载指定的会话信息
@@ -142,8 +145,7 @@ with st.sidebar:
     #会话历史
     st.text("会话历史")
     session_list = load_sessions()
-    #反转列表
-    session_list.reverse()
+    
     for session in session_list:
         col1,col2 = st.columns([4,1])#将按键放到同一行，按键占比4：1
         with col1:
@@ -170,8 +172,8 @@ with st.sidebar:
 
     st.divider()
     #彩蛋
-    audio_path = os.path.join(os.path.dirname(__file__), "resources", "上田麗奈-リテラチュア.mp3")
-    video_path = os.path.join(os.path.dirname(__file__), "resources", "1759501837394_no_watermark.mp4")
+    st.audio(base_url + "resources/上田麗奈-リテラチュア.mp3")
+    st.video(base_url + "resources/1759501837394_no_watermark.mp4")
 
 #消息输入框
 prompt = st.chat_input("请输入你的问题")
