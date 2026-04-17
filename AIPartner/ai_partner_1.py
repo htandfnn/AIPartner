@@ -4,6 +4,8 @@ from openai import OpenAI
 import datetime
 import json
 
+base_url = "https://raw.githubusercontent.com/htandfnn/AIPartner/main/"
+
 #生成会话标识函数
 def generate_session_id():
     return datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -120,7 +122,7 @@ for message in st.session_state.messages:
     if message["role"] == "user":
         st.chat_message("user").write(message["content"])
     else:
-        st.chat_message("assistant", avatar="./resources/Image_1727925149582.jpg").write(message["content"])
+        st.chat_message("assistant", avatar=base_url + "./resources/Image_1727925149582.jpg").write(message["content"])
 
 #左侧的侧边栏
 with st.sidebar:
@@ -199,7 +201,7 @@ if prompt:     #如果输入框有内容，字符串自动转换为布尔值
     #st.chat_message("assistant",avatar="./resources/Image_1727925149582.jpg").write(response.choices[0].message.content)
 
     #大模型返回结果(流式输出的解析方式)
-    with st.chat_message("assistant", avatar="./resources/Image_1727925149582.jpg"):
+    with st.chat_message("assistant", avatar=base_url + "./resources/Image_1727925149582.jpg"):
         response_message = st.empty()  # 单一占位符，持续更新内容
         full_response = ""
         
