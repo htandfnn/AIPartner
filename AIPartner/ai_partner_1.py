@@ -168,8 +168,8 @@ with st.sidebar:
 
     st.divider()
     #彩蛋
-    st.audio("resources/上田麗奈-リテラチュア.mp3")
-    st.video("resources/1759501837394_no_watermark.mp4")
+    audio_path = os.path.join(os.path.dirname(__file__), "resources", "上田麗奈-リテラチュア.mp3")
+    video_path = os.path.join(os.path.dirname(__file__), "resources", "1759501837394_no_watermark.mp4")
 
 #消息输入框
 prompt = st.chat_input("请输入你的问题")
